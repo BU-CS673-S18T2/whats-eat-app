@@ -1,3 +1,3 @@
 # whats-eat-app
 
-Team member: Bowen Jiang, Huaze Sang,
+Team member: Bowen Jiang, Huaze Sang, He Yu,
