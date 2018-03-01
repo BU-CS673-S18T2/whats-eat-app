@@ -4,6 +4,8 @@ import main.model.Food;
 import main.model.User;
 import main.service.FoodService;
 import main.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +30,9 @@ public class MainPageController {
     @Resource
     private FoodService foodService;
 
+    @Autowired
+    HttpServletRequest request;
+
     @RequestMapping("/signin")
     public @ResponseBody User login(){
         return userService.signin();
@@ -35,12 +41,10 @@ public class MainPageController {
 
     @RequestMapping(value="/signup")
     public @ResponseBody User signup(){
-        User user = new User();
-        user.setUsername("sang");
-        user.setPassword("12345");
-        user.setEmail("jimmysg@bu.edu");
-        return user;
-//        return userService.signup(null, null, null);
+        String username = request.getParameter("username");
+        String email = request.getParameter("username");
+        String password = request.getParameter("username");
+        return userService.signup(username, email, password);
     }
 
     @RequestMapping(value="/foodlist")

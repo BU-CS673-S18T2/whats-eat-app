@@ -8,16 +8,11 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class FoodService {
+public interface FoodService {
 
-    @Resource
-    private FoodDao foodDao;
 
-    public List<Food> foodList(){
-        return foodDao.getAllFoods();
-    }
 
-    public List<Food> getFoods(String tag){
-        return foodDao.getFoods(tag);
-    }
+    public List<Food> foodList();
+
+    public List<Food> getFoods(String tag);
 }
