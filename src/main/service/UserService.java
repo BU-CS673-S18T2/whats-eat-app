@@ -8,32 +8,16 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 @Service
-public class UserService {
-    @Resource
-    private UserDao userDao;
+public interface UserService {
 
-    public User signin(){
-        return userDao.signin();
-    }
 
-    public User signup(String username, String email, String password){
-        return new User();
-    }
+    public User signin();
 
-    public boolean changePassword(){
-        userDao.updateUser(new User());
-        return true;
-    }
+    public User signup(String username, String email, String password);
 
-    public Setting addSetting(int userId, Setting setting){
-        userDao.addSetting(userId, setting);
-        return setting;
-    }
+    public boolean changePassword();
 
-    public boolean changeCurrentSetting(int userId, int settingId){
-        User user = userDao.findUser(userId);
-        user.setCurrentSetting(settingId);
-        userDao.updateUser(user);
-        return true;
-    }
+    public Setting addSetting(int userId, Setting setting);
+
+    public boolean changeCurrentSetting(int userId, int settingId);
 }

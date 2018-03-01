@@ -5,32 +5,19 @@ import main.model.User;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserDao {
+public interface UserDao {
 
 
 
-    public User signin(){
-        System.out.println("userDao");
-        return new User();
-    }
+    public User signin();
 
-    public User addUser(){
-        return new User();
-    }
+    public User addUser();
 
-    public boolean addSetting(int userId, Setting setting){
-        return true;
-    }
+    public boolean addSetting(int userId, Setting setting);
 
-    public boolean deleteSetting(int id){
-        return true;
-    }
+    public boolean deleteSetting(int id);
 
-    public User updateUser(User user){
-        return new User();
-    }
+    public User updateUser(User user);
 
-    public User findUser(int userId){
-        return new User();
-    }
+    public User findUser(int userId);
 }
