@@ -41,9 +41,9 @@ public class MainPageController {
 
     @RequestMapping(value="/signup")
     public @ResponseBody User signup(){
-        String username = request.getParameter("username");
-        String email = request.getParameter("username");
-        String password = request.getParameter("username");
+        String username = request.getParameter("uname");
+        String email = request.getParameter("email");
+        String password = request.getParameter("psd");
         return userService.signup(username, email, password);
     }
 
