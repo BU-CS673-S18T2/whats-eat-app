@@ -4,14 +4,14 @@ import main.model.Setting;
 import main.model.User;
 import org.springframework.stereotype.Repository;
 
-@Repository
+
 public interface UserDao {
 
 
 
     public User signin();
 
-    public User addUser();
+    public User addUser(User user);
 
     public boolean addSetting(int userId, Setting setting);
 
