@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 public interface UserService {
 
 
-    public User signin();
+    public User signin(String email, String password);
 
     public User signup(String username, String email, String password);
 

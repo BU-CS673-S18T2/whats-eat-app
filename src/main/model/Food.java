@@ -6,7 +6,15 @@ public class Food {
     private int id;
     private String name;
     private int calorie;
+    private String ingredient;
 
+    public String getIngredient() {
+        return ingredient;
+    }
+
+    public void setIngredient(String ingredient) {
+        this.ingredient = ingredient;
+    }
 
     public int getId() {
         return id;
