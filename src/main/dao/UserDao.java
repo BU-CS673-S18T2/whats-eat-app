@@ -9,7 +9,7 @@ public interface UserDao {
 
 
 
-    public User signin();
+    public User signin(String email, String password);
 
     public User addUser(User user);
 

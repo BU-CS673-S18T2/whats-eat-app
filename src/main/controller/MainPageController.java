@@ -34,8 +34,10 @@ public class MainPageController {
     HttpServletRequest request;
 
     @RequestMapping("/signin")
-    public @ResponseBody User login(){
-        return userService.signin();
+    public @ResponseBody User signin(){
+        String username = request.getParameter("uname");
+        String email = request.getParameter("email");
+        return userService.signin(username, email);
     }
 
 
@@ -50,21 +52,11 @@ public class MainPageController {
     @RequestMapping(value="/foodlist")
     public @ResponseBody
     List<Food> foodList(){
-        List<Food> foods = new ArrayList<Food>();
-        Food apple = new Food();
-        apple.setName("apple");
-        apple.setCalorie(100);
-        Food orange = new Food();
-        orange.setName("orange");
-        orange.setCalorie(80);
-        foods.add(apple);
-        foods.add(orange);
-        return foods;
-//        return foodService.foodList();
+        return foodService.foodList();
     }
 
 
-    @RequestMapping(value = "{tag}")
+    @RequestMapping(value = "/food/{tag}")
     public @ResponseBody
     List<Food> foodsByTag(@PathVariable String tag){
         return foodService.getFoods(tag);

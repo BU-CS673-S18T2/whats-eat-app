@@ -1,9 +1,18 @@
 package main.model;
 
 public class Setting {
+    private int id;
     private int breakfirst_cal;
     private int lunch_cal;
     private int dinner_cal;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getBreakfirst_cal() {
         return breakfirst_cal;

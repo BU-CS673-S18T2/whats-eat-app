@@ -14,8 +14,8 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserDao userDao;
 
-    public User signin() {
-        return null;
+    public User signin(String email, String password) {
+        return userDao.signin(email, password);
     }
 
     public User signup(String username, String email, String password) {
