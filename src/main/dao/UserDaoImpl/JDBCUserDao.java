@@ -32,14 +32,16 @@ public class JDBCUserDao implements UserDao{
     }
 
     public User addUser(User user) {
-        String sql = String.format("insert into User values(NULL, '%s','%s', '%s', %s, %s, %s, %s)",
+        String sql = String.format("insert into User values(NULL, '%s','%s', '%s', '%s', %s, %s, %s, '%s')",
                 user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
                 user.getHeight(),
                 user.getWeight(),
                 user.getAge(),
-                user.getCurrentSetting());
+                //user.getBmr(),
+                user.getCurrentSetting(),
+                user.getGender());
         jdbcTemplate.execute(sql);
         return null;
     }
@@ -71,6 +73,8 @@ public class JDBCUserDao implements UserDao{
             user.setCurrentSetting(rs.getInt("current_setting"));
             user.setHeight(rs.getDouble("height"));
             user.setWeight(rs.getDouble("weight"));
+            user.setGender(rs.getString("gender"));
+            //user.setBmr(rs.getInt("bmr"));
             return user;
         }
     }
