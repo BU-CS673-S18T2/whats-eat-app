@@ -45,7 +45,7 @@ public class MainPageController {
     public @ResponseBody User signup(){
         String username = request.getParameter("uname");
         String email = request.getParameter("email");
-        String password = request.getParameter("psd");
+        String password = request.getParameter("password");
         return userService.signup(username, email, password);
     }
 
