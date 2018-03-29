@@ -18,12 +18,19 @@ public class UserServiceImpl implements UserService {
         return userDao.signin(email, password);
     }
 
-    public User signup(String username, String email, String password) {
+    public User signup(String username, String email, String password, String gender, int height, int weight, int age) {
         User user = new User();
         user.setUsername(username);
         user.setEmail(email);
         user.setPassword(password);
-        return userDao.addUser(user);
+        user.setGender(gender);
+        user.setHeight(height);
+        user.setWeight(weight);
+        user.setAge(age);
+        System.out.println("before add: "+ user);
+        user = userDao.addUser(user);
+        System.out.println("After add: " + user);
+        return user;
     }
 
     public boolean changePassword() {

@@ -1,7 +1,6 @@
 package main.dao.UserDaoImpl;
 
 import main.dao.UserDao;
-import main.model.Food;
 import main.model.Setting;
 import main.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +40,8 @@ public class JDBCUserDao implements UserDao{
                 user.getAge(),
                 user.getCurrentSetting());
         jdbcTemplate.execute(sql);
-        return null;
+        System.out.println("dao: "+user);
+        return user;
     }
 
     public boolean addSetting(int userId, Setting setting) {
@@ -69,8 +69,8 @@ public class JDBCUserDao implements UserDao{
             user.setEmail(rs.getString("email"));
             user.setAge(rs.getInt("age"));
             user.setCurrentSetting(rs.getInt("current_setting"));
-            user.setHeight(rs.getDouble("height"));
-            user.setWeight(rs.getDouble("weight"));
+            user.setHeight(rs.getInt("height"));
+            user.setWeight(rs.getInt("weight"));
             return user;
         }
     }

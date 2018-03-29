@@ -5,20 +5,15 @@ import main.model.User;
 import main.service.FoodService;
 import main.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 @RequestMapping("/main")
@@ -42,11 +37,18 @@ public class MainPageController {
 
 
     @RequestMapping(value="/signup")
-    public @ResponseBody User signup(){
-        String username = request.getParameter("uname");
+    public @ResponseBody User signup() throws IOException {
+        String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        return userService.signup(username, email, password);
+        String gender = request.getParameter("gender");
+        int height = Integer.parseInt(request.getParameter("height"));
+        int weight = Integer.parseInt(request.getParameter("weight"));
+        int age = Integer.parseInt(request.getParameter("age"));
+
+        User user = userService.signup(username, email, password, gender, height, weight, age);
+        System.out.println(username+gender+weight+height+age);
+        return user;
     }
 
     @RequestMapping(value="/foodlist")
