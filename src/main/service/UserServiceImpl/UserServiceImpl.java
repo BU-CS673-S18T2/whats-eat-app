@@ -27,9 +27,9 @@ public class UserServiceImpl implements UserService {
         user.setHeight(height);
         user.setWeight(weight);
         user.setAge(age);
-        System.out.println("before add: "+ user);
+//        System.out.println("before add: "+ user);
         user = userDao.addUser(user);
-        System.out.println("After add: " + user);
+//        System.out.println("After add: " + user);
         return user;
     }
 

@@ -84,6 +84,7 @@ CREATE TABLE `User` (
   `name` varchar(30) DEFAULT NULL,
   `email` varchar(30) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
+  `gender` varchar(50) DEFAULT NULL ,
   `height` double DEFAULT NULL,
   `weight` double DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
@@ -95,15 +96,9 @@ CREATE TABLE `User` (
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
 
-INSERT INTO `User` (`id`, `name`, `email`, `password`, `height`, `weight`, `age`, `current_setting`)
+INSERT INTO `User` (`id`, `name`, `email`, `password`,`gender`, `height`, `weight`, `age`, `current_setting`)
 VALUES
-	(1,'Sang','jimmysg@bu.edu','123456',1.74,64,26,1),
-	(2,'null','null','null',0,0,0,0),
-	(3,'null','null','null',0,0,0,0),
-	(4,'null','jimmysg@bu.edu','null',0,0,0,0),
-	(5,'null','jimmysg@bu.edu','null',0,0,0,0),
-	(6,'null','ssssss@bu.edu','null',0,0,0,0);
-
+	(1,'Sang','jimmysg@bu.edu','123456', 'male',1.74,64,26,1)
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 

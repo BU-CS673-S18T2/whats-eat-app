@@ -59,7 +59,14 @@ p {
 p1 {
     color: navy;
 }
+p2{
+    width: auto;
+    color: white;
+    border: none;
+    float: right;
+    font-size: 50px;
 
+}
 .Button {
     color: white;
     background-color: #5499C7;
@@ -265,6 +272,8 @@ hr {
         width: 100%;
     }
 }
+
+
 
 
 

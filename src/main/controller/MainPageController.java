@@ -30,9 +30,9 @@ public class MainPageController {
 
     @RequestMapping("/signin")
     public @ResponseBody User signin(){
-        String username = request.getParameter("uname");
-        String email = request.getParameter("email");
-        return userService.signin(username, email);
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        return userService.signin(username, password);
     }
 
 
@@ -47,7 +47,7 @@ public class MainPageController {
         int age = Integer.parseInt(request.getParameter("age"));
 
         User user = userService.signup(username, email, password, gender, height, weight, age);
-        System.out.println(username+gender+weight+height+age);
+//        System.out.println(username+gender+weight+height+age);
         return user;
     }
 
