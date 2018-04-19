@@ -14,4 +14,6 @@ public interface FoodService {
     public List<Food> foodList();
 
     public List<Food> getFoods(String tag);
+
+    public List<Food> getFoods(double cal);
 }
