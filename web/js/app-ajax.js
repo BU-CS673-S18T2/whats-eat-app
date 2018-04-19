@@ -81,6 +81,10 @@ $(document).ready(function(){
             var html = foods[rdn].name+
                 ", Calories: "+"\n" + foods[rdn].calorie + "Cal" ;
             document.getElementById("demo").innerHTML = html;
+            var name = rdn+1+"";
+            while(name.length <5) name = "0" + name;
+            var src = "/resource/food_image/img"+ name + ".jpg";
+            $("#food_pic").attr('src', src)
         } else{
             $.ajax({
                 type: 'GET',
@@ -90,7 +94,11 @@ $(document).ready(function(){
                     var rdn = Math.floor((Math.random() * 27368) + 1);
                     var html = foods[rdn].name+
                         ", Calories: "+ foods[rdn].calorie;
+                    var name = rdn+1+"";
+                    while(name.length <5) name = "0" + name;
+                    var src = "/resource/food_image/img"+ name + ".jpg";
                     document.getElementById("demo").innerHTML = html;
+                    $("#food_pic").attr('src', src)
                 }
             })
         }
