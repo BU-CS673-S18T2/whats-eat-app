@@ -62,6 +62,13 @@ public class MainPageController {
         return foodService.getFoods(tag);
     }
 
+    @RequestMapping(value = "/food/calorie/{calorie}")
+    public @ResponseBody
+    List<Food> foodsByCalorie(@PathVariable String calorie){
+        double cal = Double.parseDouble(calorie);
+        return foodService.getFoods(cal);
+    }
+
 
 
 }
