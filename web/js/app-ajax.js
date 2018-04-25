@@ -18,60 +18,70 @@ $(document).ready(function(){
             age: $age.val()
         };
 
+        filter = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        console.log(user.email);
+        if (!filter.test(user.email)){
+            alert('Invalid Email Address');
+        } else if (user.password.length<6){
+            alert('Password must be longer than 6');
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: 'api/main/signup',
+                data: user,
+                success: function(newUser){
+                    $("#signupform")[0].reset();
+                    $("#id01").hide();
+                    $("#signup").hide();
+                    $("#login").hide();
+                    var welcome = "Welcome, " + newUser.username + "!";
+                    $("#welcome")[0].innerHTML = welcome;
+                },
+                error: function () {
+                    alert("error");
+                }
+            })
+        }
 
-        $.ajax({
-            type: 'POST',
-            url: 'api/main/signup',
-            data: user,
-            success: function(newUser){
-                console.log(newUser);
-                $("#signupform")[0].reset();
-                $("#id01").hide();
-                $("#signup").hide();
-                $("#login").hide();
-                var welcome = "Welcome, " + newUser.username + "!";
-                console.log(welcome);
-                $("#welcome")[0].innerHTML = welcome;
 
-
-
-                // window.location.href = '';
-            },
-            error: function () {
-              alert("error");
-            }
-        })
     });
 
     $(".loginbtn").click(function(){
         var $username = $('[name="loginname"]');
         var $password = $('[name="loginpassword"]');
-        console.log($username.val(),$password.val());
 
         var user = {
             username: $username.val(),
             password: $password.val()
         };
 
-        $.ajax({
-            type: 'POST',
-            url: 'api/main/signin',
-            data: user,
-            success: function(newUser){
-                console.log(newUser);
-                $("#loginform")[0].reset();
-                $("#id02").hide();
-                $("#signup").hide();
-                $("#login").hide();
-                var welcome = "Welcome, " + newUser.username + "!";
-                console.log(welcome);
-                $("#welcome")[0].innerHTML = welcome;
+        filter = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        console.log(user.email);
+        if (!filter.test(user.email)){
+            alert('Invalid Email Address');
+        } else if (user.password.length<6){
+            alert('Password must be longer than 6');
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: 'api/main/signin',
+                data: user,
+                success: function(newUser){
+                    $("#loginform")[0].reset();
+                    $("#id02").hide();
+                    $("#signup").hide();
+                    $("#login").hide();
+                    var welcome = "Welcome, " + newUser.username + "!";
+                    $("#welcome")[0].innerHTML = welcome;
 
-            },
-            error: function () {
-                alert("error");
-            }
-        })
+                },
+                error: function () {
+                    alert("error");
+                }
+            })
+        }
+
+
     });
     var foods;
     $(".Button").click(function(){
@@ -105,4 +115,5 @@ $(document).ready(function(){
 
     });
 });
+
 
