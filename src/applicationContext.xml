@@ -18,7 +18,7 @@
                   value="jdbc:mysql://127.0.0.1:3306/whats_eat">
         </property>
         <property name="username" value="root"></property>
-        <property name="password" value="123456"></property>
+        <property name="password" value="root"></property>
     </bean>
 
     <!-- session工厂 -->
