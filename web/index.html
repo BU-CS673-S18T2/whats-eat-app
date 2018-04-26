@@ -39,6 +39,7 @@
                     <label>
                         <input type="radio" name="gender" value="male" style="margin-bottom:15px">Male
                         <input type="radio" name="gender" value="female" style="margin-bottom:15px">Female
+                        <br>
                     </label>
 
                     <label for="height"><b>Height</b></label><br>
@@ -76,12 +77,6 @@
         </button>
         <div id="id02" class="modal">
             <form id="loginform" class="modal-content animate" >
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('id02').style.display='none'" class="close"
-                          title="Close Modal">&times;</span>
-                    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-                </div>
-
                 <div class="container">
                     <label for="username"><b>Username</b></label>
                     <input type="text" placeholder="Enter Email" name="loginname" required>
@@ -91,27 +86,21 @@
 
                     <button type="button" class="loginbtn">Login</button>
                 </div>
-
+                <br>
                 <div class="container" style="background-color:#f1f1f1">
                     <button class="cancelbtn2" type="button"
                             onclick="document.getElementById('id02').style.display='none'">Cancel
                     </button>
-                    <span class="psw">Forgot <a href="#">password?</a></span>
                 </div>
             </form>
         </div>
-
-        <p2 id="welcome" class = "wel"> </p2>
+        <p2 id="welcome" ></p2>
+        <a id="logout" href=""></a>
     </ul>
 
 
 </head>
 <body>
-
-<div class="nav">
-    <h1 class="text-center">Whats eat</h1>
-
-</div>
 
 <div class="Recommendation">
     <div class="pull-left">
@@ -120,8 +109,11 @@
         <p id="demo">We will figure out what to eat for you!</p>
         <br/>
         <br/>
-        <br/>
-        <br/>
+
+        <div class="slidecontainer">
+            <input type="range" min="0" max="5000" value="2500" class="slider" id="myRange1">
+            <p1>Calorie Value: <span id="output"></span></p1>
+        </div>
         <img id="food_pic" src="" alt="">
         <br/>
         <br/>

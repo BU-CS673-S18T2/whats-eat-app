@@ -37,7 +37,7 @@ body {
     text-align: center;
     font-weight: bold;
     font-style: Fantasy;
-    background: #dcbf9c;
+    background: white;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -51,20 +51,39 @@ head{
 }
 
 p {
-    color: navy;
-    font-style: italic;
+    color: black;
+    font-family: "Times New Roman", Times, serif;
     font-size: 70px;
 }
 
-p1 {
-    color: navy;
+a{
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 50px;
+    text-align: right;
 }
-p2{
-    width: auto;
+
+p1 {
+    color: black;
+}
+
+#logout {
     color: white;
     border: none;
     float: right;
     font-size: 50px;
+    display: block;
+    position: relative;
+}
+
+p2{
+    width: auto;
+    color: white;
+    border: none;
+    float:right;
+    font-size: 50px;
+    display: block;
+    position: relative;
 
 }
 .Button {
@@ -93,10 +112,6 @@ p2{
     box-shadow: 0 5px #666;
     transform: translate(4px,10px);
 }
-
-
-
-
 
 input[type=text], input[type=password], input[type=double], input[type=int] {
     width: 95%;
@@ -171,6 +186,8 @@ input[type=text]:focus, input[type=password]:focus {
     color: white;
     border: none;
     cursor: pointer;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .loginbtn{
@@ -274,7 +291,50 @@ hr {
 }
 
 
+.slidecontainer {
+    width: 50%;
+    margin-left:auto;
+    margin-right:auto;
+}
 
+.slider {
+    -webkit-appearance: none;
+    width: 40%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+label{
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+}
 
 
 
