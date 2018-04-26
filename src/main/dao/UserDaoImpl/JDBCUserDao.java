@@ -4,12 +4,15 @@ import main.dao.UserDao;
 import main.model.Food;
 import main.model.Setting;
 import main.model.User;
+import main.util.EncryptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -19,6 +22,7 @@ public class JDBCUserDao implements UserDao{
 
     private JdbcTemplate jdbcTemplate;
 
+
     @Autowired
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -26,7 +30,7 @@ public class JDBCUserDao implements UserDao{
 
     public User signin(String email, String password) {
         String sql = "SELECT * FROM User WHERE email = ? AND password = ?";
-        List<User> users = jdbcTemplate.query(sql, new Object[]{email, password}, new UserRowMapper<User>());
+        List<User> users = jdbcTemplate.query(sql, new Object[]{email, EncryptUtil.encrypt(password)}, new UserRowMapper<User>());
         //return a User instance if success, return NULL if failed
         return users.get(0);
     }
@@ -35,7 +39,7 @@ public class JDBCUserDao implements UserDao{
         String sql = String.format("insert into User values(NULL, '%s','%s', '%s', %s, %s, %s, %s)",
                 user.getUsername(),
                 user.getEmail(),
-                user.getPassword(),
+                EncryptUtil.encrypt(user.getPassword()),
                 user.getHeight(),
                 user.getWeight(),
                 user.getAge(),
