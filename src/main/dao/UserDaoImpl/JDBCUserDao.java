@@ -10,8 +10,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -28,7 +26,7 @@ public class JDBCUserDao implements UserDao{
     }
 
     public User signin(String email, String password) {
-        String sql = "SELECT * FROM User WHERE email = ? AND password = ?";
+        String sql = "SELECT * FROM User WHERE name = ? AND password = ?";
         List<User> users = jdbcTemplate.query(sql, new Object[]{email, EncryptUtil.encrypt(password)}, new UserRowMapper<User>());
         //return a User instance if success, return NULL if failed
         return users.get(0);

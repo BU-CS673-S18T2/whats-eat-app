@@ -48,6 +48,7 @@ $(document).ready(function(){
                     $("#login").hide();
                     var welcome = "Welcome, " + newUser.username + "!";
                     $("#welcome")[0].innerHTML = welcome;
+                    $("#logout")[0].innerHTML = "logout";
                 },
                 error: function () {
                     alert("error");
