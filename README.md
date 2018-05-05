@@ -10,6 +10,10 @@ Project Develop Process: Agile-scrum
 
 Here is the web link for our web app:
 	http://104.236.62.248:8080/whats-eat-app/
+The file includes Documents, Integration test and our source code.
+	Documents contains: presentations, SPPP, SDD, STD, Weekly_report, Risk_management and Meeting Minutes;
+	Integration test are test based on localhost server;
+	Our source code contains production code and also unit test.
 
 
 
