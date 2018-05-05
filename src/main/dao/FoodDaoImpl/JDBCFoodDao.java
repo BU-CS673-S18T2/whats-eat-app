@@ -28,6 +28,12 @@ public class JDBCFoodDao implements FoodDao{
         return foods;
     }
 
+    public List<Food> getFoods(double cal) {
+        String sql = "SELECT * FROM FOOD WHERE Food.calorie < ?";
+        List<Food> foods = jdbcTemplate.query(sql, new Object[]{cal}, new FoodRowMapper<Food>());
+        return foods;
+    }
+
     public List<Food> getAllFoods() {
         String sql = "SELECT * FROM FOOD";
         List<Food> foods = jdbcTemplate.query(sql, new FoodRowMapper<Food>());

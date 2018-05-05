@@ -1,15 +1,17 @@
 package main.dao.UserDaoImpl;
 
 import main.dao.UserDao;
-import main.model.Food;
 import main.model.Setting;
 import main.model.User;
+import main.util.EncryptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -19,6 +21,7 @@ public class JDBCUserDao implements UserDao{
 
     private JdbcTemplate jdbcTemplate;
 
+
     @Autowired
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -26,24 +29,25 @@ public class JDBCUserDao implements UserDao{
 
     public User signin(String email, String password) {
         String sql = "SELECT * FROM User WHERE email = ? AND password = ?";
-        List<User> users = jdbcTemplate.query(sql, new Object[]{email, password}, new UserRowMapper<User>());
+        List<User> users = jdbcTemplate.query(sql, new Object[]{email, EncryptUtil.encrypt(password)}, new UserRowMapper<User>());
         //return a User instance if success, return NULL if failed
         return users.get(0);
     }
 
     public User addUser(User user) {
-        String sql = String.format("insert into User values(NULL, '%s','%s', '%s', '%s', %s, %s, %s, '%s')",
+        String sql = String.format("insert into User values(NULL, '%s','%s','%s', '%s', %d, %d, %d, %d)",
                 user.getUsername(),
                 user.getEmail(),
-                user.getPassword(),
+
+                EncryptUtil.encrypt(user.getPassword()),
+                user.getGender(),
+
                 user.getHeight(),
                 user.getWeight(),
                 user.getAge(),
-                //user.getBmr(),
-                user.getCurrentSetting(),
-                user.getGender());
+                user.getCurrentSetting());
         jdbcTemplate.execute(sql);
-        return null;
+        return user;
     }
 
     public boolean addSetting(int userId, Setting setting) {
@@ -69,12 +73,11 @@ public class JDBCUserDao implements UserDao{
             User user = new User();
             user.setUsername(rs.getString("name"));
             user.setEmail(rs.getString("email"));
+            user.setGender(rs.getString("gender"));
             user.setAge(rs.getInt("age"));
             user.setCurrentSetting(rs.getInt("current_setting"));
-            user.setHeight(rs.getDouble("height"));
-            user.setWeight(rs.getDouble("weight"));
-            user.setGender(rs.getString("gender"));
-            //user.setBmr(rs.getInt("bmr"));
+            user.setHeight(rs.getInt("height"));
+            user.setWeight(rs.getInt("weight"));
             return user;
         }
     }

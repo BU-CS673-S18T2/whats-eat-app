@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UserPage</title>
+    <link rel="stylesheet" href="style.css" />
+        <ul>
+     <li><a class="active" href="Home.html">Home</a></li>
+     <li><a href="Contact.html">Contact</a></li>
+     <li><a href="UserPage.html">Userpage</a></li>
+        </ul>
+</head>
+<body>
+
+
+<p1>Account:</p1>
+<div id = "username"></div>
+<br>
+
+<p1>Gender:</p1>
+<div id = "gender"></div>
+<br>
+
+<p1>Height:</p1>
+<div id = "height"></div><button class="button1" id = "mh" onclick = "ModifyHeight()">modify</button>
+<br>
+
+<p1>Weight:</p1>
+<div id = "weight"></div><button class="button1" id = "mw" onclick = "ModifyWeight()">modify</button>
+<br>
+
+<p1>Age:</p1>
+<div id = "age"></div><button class="button1" id = "ma" onclick = "ModifyAge()">modify</button>
+<br>
+
+    <form>
+        <p1>BMI:</p1> 
+
+        <output id = "bmi"></output><br>
+    </form>
+<button type = "submit" class="button1" onclick = "CalculateBMI()">Submit</button><br>
+
+<p1>History</p1>
+
+
+</body>
+
+<script>
+    function ShowUsername()
+    {
+        var Username = "<%=getUsername()%>";
+        document.getElementById("username").value = Username
+    }
+
+    function ShowGender()
+    {
+        var Gender = "<%=getGender()%>";
+        document.getElementById("gender").value = Gender
+    }
+
+    function ShowHeight()
+    {
+        var Height = "<%=getHeight()%>";
+        document.getElementById("height").value = Height
+    }
+
+    function ShowWeight()
+    {
+        var Weight = "<%=getWeight()%>";
+        document.getElementById("weight").value = Weight
+    }
+
+    function ShowAge()
+    {
+        var Age = "<%=getAge()%>";
+        document.getElementById("age").value = Age
+    }
+
+    function CalculateBMI()
+    {
+        var HeightSelect = document.getElementById("h").value
+        var WeightSelect = document.getElementById("w").value
+        var AgeSelect = document.getElementById("a").value
+
+        var Gender = "male"
+        if(Gender === "male")
+        {
+            var BMI = Number(HeightSelect) + Number(WeightSelect) + Number(AgeSelect)
+        }
+        else
+        {
+            var BMI = Number(HeightSelect) + Number(WeightSelect) + Number(AgeSelect) + 1
+        }
+
+        document.getElementById("bmi").value = BMI
+    }
+
+    function ModifyHeight()
+    {
+        var text = document.getElementById("height");
+        var val = text.innerHTML;
+        text.innerHTML = "<input type='text' id='h' onkeydown = 'NumOnly()' value="+val+" >";
+        document.getElementById("h").addEventListener("blur",function()
+        {
+            text.innerHTML=document.getElementById("n").value;
+        })
+    }
+
+    function ModifyWeight()
+    {
+        var text = document.getElementById("weight");
+        var val = text.innerHTML;
+        text.innerHTML = "<input type='text' id='w' value="+val+" >";
+        document.getElementById("w").addEventListener("blur",function()
+        {
+            text.innerHTML=document.getElementById("n").value;
+        })
+    }
+
+    function ModifyAge()
+    {
+        var text = document.getElementById("age");
+        var val = text.innerHTML;
+        text.innerHTML = "<input type='text' id='a' value="+val+" >";
+        document.getElementById("a").addEventListener("blur",function()
+        {
+            text.innerHTML=document.getElementById("n").value;
+        })
+    }
+
+    function NumOnly()
+    {
+        if ( ! ((event.keyCode >= 48 && event.keyCode <= 57 ) || (event.keyCode >= 96 && event.keyCode <= 105 ) || (event.keyCode == 8 )))
+            event.returnValue = false ;
+    }
+</script>
+</html>

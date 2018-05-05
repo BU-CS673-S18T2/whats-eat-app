@@ -20,4 +20,8 @@ public class FoodServiceImpl implements FoodService{
     public List<Food> getFoods(String tag) {
         return foodDao.getFoods(tag);
     }
+
+    public List<Food> getFoods(double cal) {
+        return foodDao.getFoods(cal);
+    }
 }
